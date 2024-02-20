@@ -210,6 +210,11 @@ public class researchCalc extends JFrame {
 		btnReset.setBounds(361, 232, 108, 21);
 		contentPane.add(btnReset);
 		
+		JLabel lblNewLabel_8 = new JLabel("Time Remaining for Research: ");
+		lblNewLabel_8.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+		lblNewLabel_8.setBounds(46, 302, 150, 13);
+		contentPane.add(lblNewLabel_8);
+		
 		txtTimeNeeded = new JTextField();
 		txtTimeNeeded.setBounds(206, 299, 393, 19);
 		contentPane.add(txtTimeNeeded);
