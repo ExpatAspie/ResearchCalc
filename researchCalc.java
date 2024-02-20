@@ -1,6 +1,8 @@
 package researchCalc;
-
+//TODO: Zeus nightmares
 //TODO: Koios color scheme?
+
+//Version 0.2: eliminated the second while loop
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -12,6 +14,7 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 
 public class researchCalc extends JFrame {
 
@@ -26,6 +29,7 @@ public class researchCalc extends JFrame {
 	private JTextField txtkoiCrew;
 	private JTextField txtk5Installs;
 	private JTextField txtTimeNeeded;
+
 
 	/**
 	 * Launch the application.
@@ -49,7 +53,7 @@ public class researchCalc extends JFrame {
 	public researchCalc() {
 		setTitle("Koios Research Calculator");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 613, 388);
+		setBounds(100, 100, 633, 388);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -175,25 +179,10 @@ public class researchCalc extends JFrame {
 				int[] time= new int[4];
 				
 				//dirty work, maybe
-				
-				while(remainingTimeSec > 0) {
-					if(remainingTimeSec > 86400) {
-						time[0] += 1;
-						remainingTimeSec -= 86400;
-					}
-					else if(remainingTimeSec > 3600) {
-						time[1] +=1;
-						remainingTimeSec -= 3600;
-					}
-					else if(remainingTimeSec > 60) {
-						time[2] += 1;
-						remainingTimeSec -= 60;
-					}
-					else {
-						time[3] = (int) remainingTimeSec;
-						remainingTimeSec = 0;
-					}
-				}
+				time[0] = (int)remainingTimeSec/68400;
+				time[1] = (int)(remainingTimeSec % 68400)/3600;
+				time[2] = (int)((remainingTimeSec % 68400)%3600)/60;
+				time[3] = (int)((remainingTimeSec % 68400)%3600)%60;
 				txtTimeNeeded.setText(time[0] + " days " + time[1] + " hours " + time[2] + " minutes " + time[3] + " seconds");
 			}
 		});
@@ -225,11 +214,6 @@ public class researchCalc extends JFrame {
 		txtTimeNeeded.setBounds(206, 299, 393, 19);
 		contentPane.add(txtTimeNeeded);
 		txtTimeNeeded.setColumns(20);
-		
-		JLabel lblNewLabel_8 = new JLabel("Time Remaining for Research");
-		lblNewLabel_8.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		lblNewLabel_8.setBounds(46, 302, 150, 13);
-		contentPane.add(lblNewLabel_8);
 		
 	}
 }
